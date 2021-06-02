@@ -53,9 +53,15 @@ export default function IndexPage() {
         </div>
         {isLoading || searchNotesLoading ? "Loading..." : null}
         {search.length >= 4 ? (
-          <Notes notes={searchNotes} />
+          <>
+            <h5> Showing notes for `{search}` </h5>
+            <Notes notes={searchNotes} />
+          </>
         ) : (
-          <Notes notes={notes} />
+          <>
+            <h5> Showing most recent notes</h5>
+            <Notes notes={notes} />
+          </>
         )}
       </Container>
     </div>
