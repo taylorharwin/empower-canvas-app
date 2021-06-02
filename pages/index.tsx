@@ -14,8 +14,6 @@ export default function IndexPage() {
     search
   );
 
-  console.log(searchNotes);
-
   if (isLoading) {
     return (
       <div>

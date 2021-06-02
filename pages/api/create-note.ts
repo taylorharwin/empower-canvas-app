@@ -15,7 +15,7 @@ const handler: NextApiHandler = async (req, res) => {
       INSERT INTO notes (about_name, canvas_message)
       VALUES (?, ?)
       `,
-      [about_name, canvas_message]
+      [about_name.toString(), canvas_message.toString()]
     );
 
     return res.json(results);
