@@ -9,16 +9,13 @@ import { TrashIcon } from "@heroicons/react/solid";
 
 export default function Note({ id, about_name, canvas_message }) {
   return (
-    <div className="relative focus-within:ring-2 focus-within:ring-indigo-500">
-      <div className="flex flex-row w-full justify-between mb-4">
-        <ButtonLink href={`/note/${id}`}>
-          <PencilIcon className="cursor-pointer hover:text-blue-800 h-5 w-5 text-blue-500" />
-        </ButtonLink>
-      </div>
-      <h3 className="text-sm font-semibold text-gray-800">{about_name}</h3>
-      <p className="mt-1 text-sm text-gray-600 line-clamp-2">
-        {canvas_message}
-      </p>
+    <div className="cursor-pointer hover:bg-gray-400 w-full py-4">
+      <a href={`/note/${id}`}>
+        <h3 className="text-sm font-semibold text-gray-800">{about_name}</h3>
+        <p className="mt-1 text-sm text-gray-600 line-clamp-2">
+          {canvas_message}
+        </p>
+      </a>
     </div>
   );
 }

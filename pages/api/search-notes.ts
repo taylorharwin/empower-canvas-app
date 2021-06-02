@@ -7,7 +7,7 @@ const handler: NextApiHandler = async (req, res) => {
     if (!search) {
       return res.status(400).json({ message: "`search` required" });
     }
-    if (search.length < 5) {
+    if (search.length < 4) {
       return res
         .status(400)
         .json({ message: "`search` must be at least 4 characters" });

@@ -1,13 +1,20 @@
+import { useState } from "react";
 import Skeleton from "react-loading-skeleton";
-
 import Nav from "@/components/nav";
 import Container from "@/components/container";
 import Notes from "@/components/notes";
 
-import { useNotes } from "@/lib/swr-hooks";
+import { useNotes, useSearchNotes } from "@/lib/swr-hooks";
 
 export default function IndexPage() {
+  const [search, setSearch] = useState("");
   const { notes, isLoading } = useNotes();
+
+  const { notes: searchNotes, isLoading: searchNotesLoading } = useSearchNotes(
+    search
+  );
+
+  console.log(searchNotes);
 
   if (isLoading) {
     return (
@@ -31,7 +38,25 @@ export default function IndexPage() {
     <div>
       <Nav />
       <Container>
-        <Notes notes={notes} />
+        <div className="my-4">
+          <label htmlFor="search">
+            <h3 className="font-bold">Search By Name or Note</h3>
+          </label>
+          <input
+            id="text"
+            className="shadow border rounded w-full p-2"
+            type="text"
+            name="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        {isLoading || searchNotesLoading ? "Loading..." : null}
+        {search.length >= 4 ? (
+          <Notes notes={searchNotes} />
+        ) : (
+          <Notes notes={notes} />
+        )}
       </Container>
     </div>
   );

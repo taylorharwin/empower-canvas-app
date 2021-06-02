@@ -8,7 +8,7 @@ const handler: NextApiHandler = async (req, res) => {
     res.status(400).json({ message: `id is required` });
   }
 
-  if (typeof parseInt(id, 10) !== "number") {
+  if (typeof parseInt(id.toString()) !== "number") {
     res.status(400).json({ message: `id must be a number` });
   }
 

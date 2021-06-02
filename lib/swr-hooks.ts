@@ -14,6 +14,16 @@ export function useNotes() {
   };
 }
 
+export function useSearchNotes(search: string) {
+  const { data, error } = useSWR(`/api/search-notes?search=${search}`, fetcher);
+
+  return {
+    notes: data,
+    isLoading: !error && !data,
+    isError: error,
+  };
+}
+
 export function useNote(id: string) {
   return useSWR(`/api/get-note?id=${id}`, fetcher);
 }

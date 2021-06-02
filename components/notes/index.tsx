@@ -4,10 +4,10 @@ function Notes({ notes }) {
   if (notes) {
     return (
       <div>
-        <div className="flow-root mt-6">
-          <ul className="-my-5 divide-y divide-gray-200">
+        <div className="flow-root">
+          <ul className="divide-y divide-gray-200">
             {notes.map((note) => (
-              <li key={note.id} className="py-5">
+              <li key={note.id}>
                 <Note
                   canvas_message={note.canvas_message}
                   about_name={note.about_name}
