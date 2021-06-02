@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
 import Skeleton from "react-loading-skeleton";
 
-import { useNote } from "@/lib/swr-hooks";
 import Container from "@/components/container";
 import EditNoteForm from "@/components/edit-note";
-
 import Nav from "@/components/nav";
+
+import { useNote } from "../../lib/swr-hooks";
 
 export default function EditEntryPage() {
   const router = useRouter();

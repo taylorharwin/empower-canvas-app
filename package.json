@@ -9,6 +9,7 @@
     "seed": "node scripts/seed-db.js"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.1",
     "bad-words": "^3.0.4",
     "clsx": "^1.1.1",
     "dotenv": "^8.2.0",

@@ -4,8 +4,10 @@ import { mutate } from "swr";
 
 import ButtonLink from "@/components/button-link";
 import Button from "@/components/button";
+import { PencilIcon } from "@heroicons/react/solid";
+import { TrashIcon } from "@heroicons/react/solid";
 
-function Note({ id, about_name, canvas_message }) {
+export default function Note({ id, about_name, canvas_message }) {
   const [deleting, setDeleting] = useState(false);
 
   async function deleteEntry() {
@@ -17,25 +19,24 @@ function Note({ id, about_name, canvas_message }) {
     setDeleting(false);
   }
   return (
-    <div>
-      <div className="flex items-center">
+    <div className="flex flex-col">
+      <div className="w-1/4 flex flex-row items-center">
         <Link href={`/note/${id}`}>
-          <a className="font-bold py-2">Edit</a>
+          <PencilIcon className="cursor-pointer hover:text-blue-800 h-5 w-5 text-blue-500" />
         </Link>
-        <div className="flex ml-4">
-          <Button
-            disabled={deleting}
-            onClick={deleteEntry}
-            className="h-5 py-0 mx-1"
-          >
-            {deleting ? "Deleting ..." : "Delete"}
-          </Button>
-        </div>
+
+        <Button
+          disabled={deleting}
+          onClick={deleteEntry}
+          className="h-5 py-0 mx-1"
+        >
+          {deleting ? "Deleting ..." : "Delete"}
+        </Button>
       </div>
-      <p>{about_name}</p>
-      <p>{canvas_message}</p>
+      <div className="w-1/4">
+        <h3 className="text-xl font-bold mb-4">{about_name}</h3>
+      </div>
+      <div className="text-md">{canvas_message}</div>
     </div>
   );
 }
-
-export default Note;
