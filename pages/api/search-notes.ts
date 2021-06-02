@@ -19,7 +19,7 @@ const handler: NextApiHandler = async (req, res) => {
        ORDER BY updated_at DESC
        LIMIT 10
     `,
-      [search]
+      [search.toString()]
     );
 
     return res.json(results);

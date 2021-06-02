@@ -1,4 +1,4 @@
-import Note from "./Note";
+import SingleNote from "./SingleNote";
 
 function Notes({ notes }) {
   if (notes) {
@@ -8,7 +8,7 @@ function Notes({ notes }) {
           <ul className="divide-y divide-gray-200">
             {notes.map((note) => (
               <li key={note.id}>
-                <Note
+                <SingleNote
                   canvas_message={note.canvas_message}
                   about_name={note.about_name}
                   id={note.id}

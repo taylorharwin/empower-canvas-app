@@ -18,7 +18,7 @@ const handler: NextApiHandler = async (req, res) => {
       SELECT * FROM notes
       WHERE id=?
   `,
-      [id]
+      [id.toString()]
     );
 
     return res.json(results[0]);

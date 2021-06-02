@@ -4,10 +4,8 @@ import { mutate } from "swr";
 
 import ButtonLink from "@/components/button-link";
 import Button from "@/components/button";
-import { PencilIcon } from "@heroicons/react/solid";
-import { TrashIcon } from "@heroicons/react/solid";
 
-export default function Note({ id, about_name, canvas_message }) {
+export default function SingleNote({ id, about_name, canvas_message }) {
   return (
     <div className="cursor-pointer hover:bg-gray-400 w-full py-4">
       <a href={`/note/${id}`}>

@@ -10,8 +10,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@heroicons/react": "^1.0.1",
-    "bad-words": "^3.0.4",
     "clsx": "^1.1.1",
     "dotenv": "^8.2.0",
     "jest": "^27.0.3",
