@@ -4,22 +4,32 @@ function Notes({ notes }) {
   if (notes) {
     return (
       <div>
-        {notes.map((note) => (
-          <div key={note.id} className="py-2">
-            <Note
-              id={note.id}
-              updated_at={note.updated_at}
-              created_at={note.created_at}
-              canvas_message={note.canvas_message}
-              about_name={note.about_name}
-            />
-          </div>
-        ))}
+        <div className="flow-root mt-6">
+          <ul className="-my-5 divide-y divide-gray-200">
+            {notes.map((note) => (
+              <li key={note.id} className="py-5">
+                <Note
+                  canvas_message={note.canvas_message}
+                  about_name={note.about_name}
+                  id={note.id}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-6">
+          <a
+            href="#"
+            className="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            View all
+          </a>
+        </div>
       </div>
     );
-  } else {
-    return null;
   }
+  return null;
 }
 
 export default Notes;

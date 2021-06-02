@@ -3,17 +3,28 @@ import Router, { useRouter } from "next/router";
 import { mutate } from "swr";
 
 import Button from "../button";
+import LinkButton from "../button-link";
 
 export default function EditNoteForm({ canvas_message, id, about_name }) {
   const [aboutName, setAboutName] = useState(about_name);
   const [canvasMessage, setCanvasMessage] = useState(canvas_message);
   const [submitting, setSubmitting] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    console.log("mount");
     setAboutName(about_name);
     setCanvasMessage(canvas_message);
   }, [canvas_message, about_name]);
+
+  async function deleteNote() {
+    setDeleting(true);
+    let res = await fetch(`/api/delete-note?id=${id}`, { method: "DELETE" });
+    let json = await res.json();
+    if (!res.ok) throw Error(json.message);
+    Router.push("/");
+    mutate("/api/get-notes");
+    setDeleting(false);
+  }
 
   const router = useRouter();
 
@@ -69,9 +80,24 @@ export default function EditNoteForm({ canvas_message, id, about_name }) {
           onChange={(e) => setCanvasMessage(e.target.value)}
         />
       </div>
-      <Button disabled={submitting} type="submit">
-        {submitting ? "Editing ..." : "Edit"}
-      </Button>
+      <div className="flex flex-row justify-between">
+        <div className="inline-flex space-x-4">
+          <Button disabled={submitting || deleting} type="submit">
+            {submitting ? "Saving..." : "Save"}
+          </Button>
+          <LinkButton
+            className="bg-blue-400"
+            disabled={submitting || deleting}
+            href="/"
+          >
+            Cancel
+          </LinkButton>
+        </div>
+
+        <Button disabled={deleting} onClick={deleteNote} className="bg-red-400">
+          {deleting ? "Deleting ..." : "Delete"}
+        </Button>
+      </div>
     </form>
   );
 }
