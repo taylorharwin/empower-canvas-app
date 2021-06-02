@@ -30,20 +30,9 @@ async function query(q) {
 async function migrate() {
   try {
     await query(`
-    CREATE TABLE IF NOT EXISTS notes (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      canvas_message TEXT NOT NULL,
-      about_name TEXT NOT NULL,
-      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      updated_at
-        TIMESTAMP
-        NOT NULL
-        DEFAULT CURRENT_TIMESTAMP
-        ON UPDATE CURRENT_TIMESTAMP,
-      FULLTEXT(canvas_message, about_name)
-    )
-    `);
-    console.log("migration ran successfully");
+      INSERT INTO notes (canvas_message, about_name) VALUES ('this is the first example note', 'Taylor Harwin'),('this the second example note', 'John Doe'),('this is the third example note', 'Jane Doe')`);
+
+    console.log("seed ran successfully");
   } catch (e) {
     console.log(e);
     process.exit(1);

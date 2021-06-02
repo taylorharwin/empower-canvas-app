@@ -1,19 +1,19 @@
-import useSWR from 'swr'
+import useSWR from "swr";
 
 function fetcher(url: string) {
-  return window.fetch(url).then((res) => res.json())
+  return window.fetch(url).then((res) => res.json());
 }
 
-export function useEntries() {
-  const { data, error } = useSWR(`/api/get-entries`, fetcher)
+export function useNotes() {
+  const { data, error } = useSWR(`/api/get-notes`, fetcher);
 
   return {
-    entries: data,
+    notes: data,
     isLoading: !error && !data,
     isError: error,
-  }
+  };
 }
 
-export function useEntry(id: string) {
-  return useSWR(`/api/get-entry?id=${id}`, fetcher)
+export function useNote(id: string) {
+  return useSWR(`/api/get-note?id=${id}`, fetcher);
 }
