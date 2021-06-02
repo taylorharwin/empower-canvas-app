@@ -25,7 +25,6 @@ export default function EditEntryPage() {
   }
 
   const { id, about_name, canvas_message } = data;
-  console.log(canvas_message);
   return (
     <>
       <Nav title="Edit" />

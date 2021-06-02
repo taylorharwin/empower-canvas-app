@@ -5,9 +5,14 @@ import { mutate } from "swr";
 import Button from "../button";
 
 export default function EditNoteForm({ canvas_message, id, about_name }) {
+  console.log(canvas_message);
   const [aboutName, setAboutName] = useState(about_name);
   const [canvasMessage, setCanvasMessage] = useState(canvas_message);
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    setAboutName(aboutName);
+  }, [canvasMessage, about_name]);
 
   const router = useRouter();
 
