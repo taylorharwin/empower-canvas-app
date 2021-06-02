@@ -3,7 +3,6 @@ import Router, { useRouter } from "next/router";
 import { mutate } from "swr";
 
 import Button from "../button";
-import LinkButton from "../button-link";
 
 export default function EditNoteForm({ canvas_message, id, about_name }) {
   const [aboutName, setAboutName] = useState(about_name);
@@ -28,7 +27,7 @@ export default function EditNoteForm({ canvas_message, id, about_name }) {
 
   const router = useRouter();
 
-  async function submitHandler(e) {
+  async function handleEdit(e) {
     e.preventDefault();
     setSubmitting(true);
     try {
@@ -54,7 +53,7 @@ export default function EditNoteForm({ canvas_message, id, about_name }) {
   }
 
   return (
-    <form onSubmit={submitHandler}>
+    <>
       <div className="my-4">
         <label htmlFor="aboutName">
           <h3 className="font-bold">A note about...</h3>
@@ -82,22 +81,22 @@ export default function EditNoteForm({ canvas_message, id, about_name }) {
       </div>
       <div className="flex flex-row justify-between">
         <div className="inline-flex space-x-4">
-          <Button disabled={submitting || deleting} type="submit">
+          <Button
+            onClick={handleEdit}
+            disabled={submitting || deleting}
+            type="submit"
+          >
             {submitting ? "Saving..." : "Save"}
           </Button>
-          <LinkButton
-            className="bg-blue-400"
-            disabled={submitting || deleting}
-            href="/"
-          >
-            Cancel
-          </LinkButton>
+          <Button className="bg-blue-400" disabled={submitting || deleting}>
+            <a href="/">Cancel</a>
+          </Button>
         </div>
 
         <Button disabled={deleting} onClick={deleteNote} className="bg-red-400">
           {deleting ? "Deleting ..." : "Delete"}
         </Button>
       </div>
-    </form>
+    </>
   );
 }
