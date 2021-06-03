@@ -2,8 +2,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { mutate } from "swr";
 
-import ButtonLink from "@/components/button-link";
-import Button from "@/components/button";
+import ButtonLink from "@/components/ButtonLink";
+import Button from "@/components/Button";
 
 type SingleNoteProps = {
   id: number;

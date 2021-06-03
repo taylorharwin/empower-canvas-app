@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Router, { useRouter } from "next/router";
 import { mutate } from "swr";
 
-import Button from "../button";
+import Button from "@/components/Button";
 
 export default function EditNoteForm({ canvas_message, id, about_name }) {
   const [aboutName, setAboutName] = useState(about_name);

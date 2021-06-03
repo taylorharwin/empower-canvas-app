@@ -8,7 +8,11 @@ type Note = {
   id: number;
 };
 
-function Notes({ notes }: Note[]) {
+interface NotesProps {
+  notes: Array<Note>;
+}
+
+function Notes({ notes }: NotesProps) {
   if (notes) {
     return (
       <div>
