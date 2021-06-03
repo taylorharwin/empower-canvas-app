@@ -37,13 +37,13 @@ export default function CreateNoteForm() {
   }
 
   return (
-    <form onSubmit={submitHandler}>
+    <form id="createNoteForm" onSubmit={submitHandler}>
       <div className="my-4">
         <label htmlFor="aboutName">
           <h3 className="font-bold">A note about...</h3>
         </label>
         <input
-          id="text"
+          id="aboutName"
           className="shadow border rounded w-full p-6 whitespace-pre-wrap"
           type="text"
           name="text"

@@ -1,6 +1,7 @@
 import { NextApiHandler } from "next";
 import { query } from "../../lib/db";
 
+//TODO: Paginate results
 const handler: NextApiHandler = async (req, res) => {
   const { search } = req.query;
   try {
@@ -17,7 +18,6 @@ const handler: NextApiHandler = async (req, res) => {
        WHERE MATCH(about_name, canvas_message)
        AGAINST(? IN NATURAL LANGUAGE MODE) 
        ORDER BY updated_at DESC
-       LIMIT 10
     `,
       [search.toString()]
     );

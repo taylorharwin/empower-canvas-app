@@ -1,6 +1,14 @@
 import SingleNote from "./SingleNote";
 
-function Notes({ notes }) {
+type Note = {
+  canvas_message: string;
+  created_at: string;
+  updated_at: string;
+  about_name: string;
+  id: number;
+};
+
+function Notes({ notes }: Note[]) {
   if (notes) {
     return (
       <div>
@@ -16,15 +24,6 @@ function Notes({ notes }) {
               </li>
             ))}
           </ul>
-        </div>
-
-        <div className="mt-6">
-          <a
-            href="#"
-            className="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-          >
-            View all
-          </a>
         </div>
       </div>
     );

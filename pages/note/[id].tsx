@@ -5,7 +5,7 @@ import Container from "@/components/Container";
 import EditNoteForm from "@/components/EditNoteForm";
 import Nav from "@/components/Nav";
 
-import { useNote } from "../../lib/swr-hooks";
+import { useNote } from "@/lib/swr-hooks";
 
 export default function EditEntryPage() {
   const router = useRouter();

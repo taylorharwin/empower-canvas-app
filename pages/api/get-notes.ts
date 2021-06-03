@@ -1,12 +1,12 @@
 import { NextApiHandler } from "next";
 import { query } from "../../lib/db";
 
+// TODO: Paginate results
 const handler: NextApiHandler = async (req, res) => {
   try {
     const results = await query(`
       SELECT * FROM notes
       ORDER BY updated_at DESC
-      LIMIT 10
   `);
 
     return res.json(results);

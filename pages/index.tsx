@@ -44,7 +44,7 @@ export default function IndexPage() {
 
         {search.length >= 4 ? (
           <>
-            <h5> Showing notes for `{search}` </h5>
+            <h5> Search results for `{search}` </h5>
             <Notes notes={searchNotes} />
           </>
         ) : (

@@ -5,7 +5,16 @@ import { mutate } from "swr";
 import ButtonLink from "@/components/button-link";
 import Button from "@/components/button";
 
-export default function SingleNote({ id, about_name, canvas_message }) {
+type SingleNoteProps = {
+  id: number;
+  about_name: string;
+  canvas_message: string;
+};
+export default function SingleNote({
+  id,
+  about_name,
+  canvas_message,
+}: SingleNoteProps) {
   return (
     <div className="cursor-pointer hover:bg-gray-200 w-full py-4 px-2">
       <a href={`/note/${id}`}>
