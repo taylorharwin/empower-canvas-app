@@ -10,13 +10,15 @@ Clicking on any part of a note loads a page where I can edit the `about_name` or
 
 If I click "New Note", I can create a new note.
 
-## Limitations and
+## Limitations and TODOs
+
+This app does not have a notion of authentication or users. In other words, anyone can enter arbitrary notes about any name. Furthemore the `about_name` is not stored as structured data, so there is no ability to organize notes for the same name. Lastly, there is no pagination, and we should expect the app to break with many names.
 
 ## Relevant Tools and Frameworks
 
 The app uses NextJS for basic React configuration, with a API built around **serverless-mysql**. Each API route corresponds to a file, such as **create-note.ts**.
 
-The front-end uses SWR ('stale while revalidate") hooks to manage data fetching and caching and **tailwind-css** for styling. All application code is in Typescript, with a few scripts in JS for managing local data.
+The front-end uses SWR ('stale while revalidate") hooks to manage data fetching and caching, and **tailwind-css** for styling. All application code is in Typescript, with a few scripts in JS for managing local data.
 
 ## Running locally
 
@@ -32,10 +34,10 @@ The front-end uses SWR ('stale while revalidate") hooks to manage data fetching 
 
 ** Important Note: You will need to manually create the canvas database**
 
-3. Run migrations and seed database with mock data: `yarn migrate and yarn seed`
+3. Run migrations and seed database with mock data: `yarn migrate && yarn seed`
 4. Start local dev server: `yarn dev`
-5. Navigate to app on localhost:3000
+5. Navigate to app on http://localhost:3000
 
 ## Tests
 
-`yarn test` to run the tests that are written in the amount of time spent on this project.
+`yarn test` to run the tests, which are written with Puppeteer and Jest. The tests are minimal.
