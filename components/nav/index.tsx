@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Container from "@/components/container";
-import ButtonLink from "@/components/button-link";
+import Container from "@/components/Container";
+import ButtonLink from "@/components/ButtonLink";
 
 export default function Nav({ title = "Canvas Notes" }) {
   return (

@@ -7,7 +7,7 @@ import Button from "@/components/button";
 
 export default function SingleNote({ id, about_name, canvas_message }) {
   return (
-    <div className="cursor-pointer hover:bg-gray-400 w-full py-4">
+    <div className="cursor-pointer hover:bg-gray-200 w-full py-4 px-2">
       <a href={`/note/${id}`}>
         <h3 className="text-sm font-semibold text-gray-800">{about_name}</h3>
         <p className="mt-1 text-sm text-gray-600 line-clamp-2">

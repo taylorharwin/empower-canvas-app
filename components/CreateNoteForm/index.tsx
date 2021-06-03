@@ -3,14 +3,19 @@ import Router from "next/router";
 
 import Button from "@/components/button";
 
-export default function CreateNote() {
+export default function CreateNoteForm() {
   const [aboutName, setAboutName] = useState("");
   const [canvasMessage, setCanvasMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
+  const formDisabled = aboutName === "" || canvasMessage === "" || submitting;
   async function submitHandler(e) {
-    setSubmitting(true);
     e.preventDefault();
+    if (formDisabled) {
+      return false;
+    }
+    setSubmitting(true);
+
     try {
       const res = await fetch("/api/create-note", {
         method: "POST",
@@ -39,7 +44,7 @@ export default function CreateNote() {
         </label>
         <input
           id="text"
-          className="shadow border rounded w-full p-6"
+          className="shadow border rounded w-full p-6 whitespace-pre-wrap"
           type="text"
           name="text"
           value={aboutName}
@@ -58,7 +63,7 @@ export default function CreateNote() {
           onChange={(e) => setCanvasMessage(e.target.value)}
         />
       </div>
-      <Button disabled={submitting} type="submit">
+      <Button disabled={formDisabled} type="submit">
         {submitting ? "Creating ..." : "Create"}
       </Button>
     </form>

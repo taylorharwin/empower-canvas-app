@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Skeleton from "react-loading-skeleton";
-import Nav from "@/components/nav";
-import Container from "@/components/container";
-import Notes from "@/components/notes";
+
+import Nav from "@/components/Nav";
+import Container from "@/components/Container";
+import Notes from "@/components/Notes";
 
 import { useNotes, useSearchNotes } from "@/lib/swr-hooks";
 
@@ -14,23 +15,7 @@ export default function IndexPage() {
     search
   );
 
-  if (isLoading) {
-    return (
-      <div>
-        <Nav />
-        <Container>
-          <Skeleton width={180} height={24} />
-          <Skeleton height={48} />
-          <div className="my-4" />
-          <Skeleton width={180} height={24} />
-          <Skeleton height={48} />
-          <div className="my-4" />
-          <Skeleton width={180} height={24} />
-          <Skeleton height={48} />
-        </Container>
-      </div>
-    );
-  }
+  const loading = searchNotesLoading || isLoading;
 
   return (
     <div>
@@ -38,7 +23,7 @@ export default function IndexPage() {
       <Container>
         <div className="my-4">
           <label htmlFor="search">
-            <h3 className="font-bold">Search By Name or Note</h3>
+            <h5 className="font-bold">Search By Name or Canvasing Note</h5>
           </label>
           <input
             id="text"
@@ -49,7 +34,14 @@ export default function IndexPage() {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        {isLoading || searchNotesLoading ? "Loading..." : null}
+
+        {loading && (
+          <>
+            <Skeleton width={180} height={24} />
+            <Skeleton height={48} />
+          </>
+        )}
+
         {search.length >= 4 ? (
           <>
             <h5> Showing notes for `{search}` </h5>
