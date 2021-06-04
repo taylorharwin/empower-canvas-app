@@ -40,4 +40,4 @@ The front-end uses SWR ('stale while revalidate") hooks to manage data fetching 
 
 ## Tests
 
-`yarn test` to run the tests, which are written with Puppeteer and Jest. The tests are minimal.
+`yarn test` to run integration tests, which are written with Puppeteer and Jest. The tests require that your app be running locally.
