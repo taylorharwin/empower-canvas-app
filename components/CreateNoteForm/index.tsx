@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Router from "next/router";
 
-import Button from "../Button";
+import Button from "@/components/Button";
 
 export default function CreateNoteForm() {
   const [aboutName, setAboutName] = useState("");
